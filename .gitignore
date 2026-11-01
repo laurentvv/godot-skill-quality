@@ -1,0 +1,7 @@
+# Agent local state (ledger, installed skills) - kept on disk, never committed
+.agent/
+.agents/
+
+# Scratch testbed, docs and eval workspaces - local only
+_workspace/
+skills/*-workspace/
