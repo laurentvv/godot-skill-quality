@@ -59,6 +59,11 @@ Problem: once the scene has real shadows and fog, the player character disappear
   shading and alpha-scissor shimmer (foliage, grass) and soft-shadow noise. Measured against a 2× supersampled
   reference: edge error −17 to −23 %. TAA also softens the whole image slightly and can ghost on particles and
   skinned meshes (Godot docs). If the image looks soft, try MSAA + FXAA/SMAA (`screen_space_aa`) instead.
+- **Check flat ground for banding when MSAA is combined with SDFGI/SSAO/SSIL.** In the reference scene (Godot
+  4.7.2 Forward+, AMD RX 6950 XT), MSAA together with SDFGI and SSAO drew fine horizontal stripes across roads
+  and dirt (row-to-row variation 1.79 vs 0.03 with TAA alone; removing SDFGI cut it to 0.49). It may depend on
+  the GPU/driver, so look at a flat surface at a grazing angle. If it shows, drop MSAA and keep TAA (optionally
+  plus FXAA/SMAA). TAA alone was cleaner than MSAA + TAA on roof edges and less clean on a foliage-heavy region.
 - Foliage cut-outs (alpha scissor) are not smoothed by plain MSAA. Turn on **alpha-to-coverage** on the leaf
   and grass materials: `enable_foliage_alpha_to_coverage()` sets `alpha_antialiasing_mode` on a
   StandardMaterial3D; custom shaders use `render_mode alpha_to_coverage`. It needs MSAA and helps most with soft

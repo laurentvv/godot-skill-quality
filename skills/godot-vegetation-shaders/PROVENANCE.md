@@ -10,4 +10,5 @@
   (docs.blender.org/api/5.2) and the glTF exporter options as reported by Blender 5.2.3 itself
   (`bpy.ops.export_scene.gltf.get_rna_type()`).
 - **Validation scene**: Kenney *Fantasy Town Kit* (CC0 1.0, https://kenney.nl), not redistributed here.
+  Also "wooden Barrel" by jrybalov (https://sketchfab.com/3d-models/wooden-barrel-dc8560d9474e4293bc1452487495fd37), CC-BY-4.0, not redistributed here.
 - **Files**: all original, MIT.

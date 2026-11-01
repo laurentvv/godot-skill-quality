@@ -8,4 +8,5 @@
   `godotengine/godot` tag `4.7-stable`, `doc/classes/Environment.xml`, `DirectionalLight3D.xml`, `Light3D.xml`.
   AgX availability checked on tags `4.3-stable` (absent) and `4.4-stable` (present).
 - **Validation scene**: Kenney *Fantasy Town Kit* (CC0 1.0, https://kenney.nl). Not redistributed here.
+  Also "wooden Barrel" by jrybalov (https://sketchfab.com/3d-models/wooden-barrel-dc8560d9474e4293bc1452487495fd37), CC-BY-4.0, not redistributed here.
 - **Script**: `scripts/lighting_preset.gd`, original, MIT.

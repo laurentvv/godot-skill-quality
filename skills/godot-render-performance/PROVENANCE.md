@@ -13,4 +13,5 @@
   `rendering/lights_and_shadows/directional_shadow/*`; Light3D `light_angular_distance`; Environment SDFGI
   performance note; Viewport MSAA note).
 - **Validation scene**: Kenney *Fantasy Town Kit* (CC0 1.0, https://kenney.nl), not redistributed here.
+  Also "wooden Barrel" by jrybalov (https://sketchfab.com/3d-models/wooden-barrel-dc8560d9474e4293bc1452487495fd37), CC-BY-4.0, not redistributed here.
 - **Files**: all original, MIT.

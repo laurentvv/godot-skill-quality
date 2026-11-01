@@ -87,6 +87,8 @@ static func apply_dof(camera: Camera3D, focus_distance: float, o := {}) -> Camer
 
 ## MSAA 2x + TAA (the source video's choice). MSAA cleans geometry edges, TAA cleans shader/alpha-scissor
 ## aliasing (foliage, grass). Godot docs: TAA is not complete; particles and skinned meshes may ghost.
+## Measured pitfall: MSAA + SDFGI/SSAO drew horizontal banding on flat ground (Godot 4.7.2, AMD). If you see it,
+## call apply_antialiasing(vp, {"msaa": Viewport.MSAA_DISABLED}) to keep TAA only.
 static func apply_antialiasing(viewport: Viewport, o := {}) -> void:
 	viewport.msaa_3d = o.get("msaa", Viewport.MSAA_2X)
 	viewport.use_taa = bool(o.get("taa", true))
@@ -149,6 +151,18 @@ static func add_dust(parent: Node3D, center: Vector3, extents: Vector3, o := {})
 	mat.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mat.albedo_color = o.get("color", Color(1.0, 0.95, 0.85, 0.5))
+	# Soft round mote: an untextured quad reads as a hard white square at high resolution.
+	var g := Gradient.new()
+	g.set_color(0, Color(1, 1, 1, 1))
+	g.set_color(1, Color(1, 1, 1, 0))
+	var tex := GradientTexture2D.new()
+	tex.gradient = g
+	tex.fill = GradientTexture2D.FILL_RADIAL
+	tex.fill_from = Vector2(0.5, 0.5)
+	tex.fill_to = Vector2(1.0, 0.5)
+	tex.width = 32
+	tex.height = 32
+	mat.albedo_texture = tex
 	quad.material = mat
 	p.draw_pass_1 = quad
 	p.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

@@ -15,3 +15,11 @@ as shipped.
 | MSAA 2x + TAA vs no AA, compared with a 2× supersampled render | mean abs error to the reference on roof/wall edge regions; whole image | edges −23 % and −17 %; whole image **+25 %** (TAA softens everything slightly) |
 | Vignette 0.25 + grain 0.03 | luminance centre / corners | centre unchanged (0.454 → 0.455); corners −25 % (too visible on the sky → default lowered to 0.15) |
 | Dust, 400 particles | visual | sparse specks, readable as dust, not distracting |
+
+## Iteration 2
+
+| Finding | Measurement | Result |
+|---|---|---|
+| Dust motes were untextured quads | visual at 1280×720+ | read as hard white squares → now a soft radial `GradientTexture2D`; squares gone |
+| MSAA × SDFGI/SSAO banding on flat ground (full scene, long view down the road) | mean row-to-row luminance change on the road (higher = stripes) | MSAA 2x only **1.79**; MSAA 2x + TAA 1.81; TAA only **0.03**; full scene without AA 0.03; MSAA + TAA without SDFGI 0.49 |
+| TAA only vs MSAA 2x + TAA, compared with a 2× supersampled render | mean abs error, roof-edge region / foliage-heavy region | 0.0035 vs 0.0044 (TAA only better) / 0.022 vs 0.006 (TAA only worse) |

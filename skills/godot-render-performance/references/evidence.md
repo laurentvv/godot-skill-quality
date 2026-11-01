@@ -1,6 +1,6 @@
 # Evidence: measured on a reference scene
 
-**Setup.** Godot 4.7.2.stable, Forward+, **1920×1080**, vsync off, AMD RX 6950 XT. Full village scene: sun
+**Setup.** Godot 4.7.2.stable, Forward+, **1280×720** (the window size was requested at 1920×1080 but the test project rendered at its 1280×720 base size; the json logs confirm 1280×720), vsync off, AMD RX 6950 XT. Full village scene: sun
 preset, sky, AgX, SSAO, SSIL, SDFGI, depth fog, leaf shader, blended ground, 20 000 grass tufts (MultiMesh),
 fill light, MSAA 4x + TAA, vignette/grain, dust. `scripts/bench_switches.gd` was run as shipped: 90 warm-up
 frames and 240 measured frames per configuration, fixed camera. GPU ms = `viewport_get_measured_render_time_gpu`.
@@ -31,7 +31,7 @@ Same sun direction, colour and energy; shadows changed to `shadow_budget.gd` "me
 | Sun shadows "ultra", distance 200 | 1.08 | 782 | ≈ 0.21 ms |
 | Sun shadows "medium", distance 40 | **0.85** | **950** | ≈ 0 ms (vs Godot defaults) |
 
-Visual difference, ultra → medium / ultra → low (mean absolute pixel difference, 1080p): wide view 0.19 % /
+Visual difference, ultra → medium / ultra → low (mean absolute pixel difference, 1280×720): wide view 0.19 % /
 0.23 %; close-up of barrels and rocks 0.45 % / 0.55 %; long view 0.09 % / 0.14 %. Side by side, only the
 PCSS-softened shadow edges of "ultra" can be told apart. That is a lot of cost for a barely visible difference.
 
@@ -42,7 +42,7 @@ PCSS-softened shadow edges of "ultra" can be told apart. That is a lot of cost f
 
 ## Iteration 2: PCSS × shadow distance (found by an eval run, then re-measured)
 
-Same method (1920×1080, 240 frames, 3 runs; shadow atlas 8192, Soft Ultra filter) on a lighter scene: sun, sky,
+Same method (1280×720, 240 frames, 3 runs; shadow atlas 8192, Soft Ultra filter) on a lighter scene: sun, sky,
 AgX, leaf shader, ground, 20 000 grass tufts (no SSAO/SSIL/SDFGI). GPU ms:
 
 | | distance 200 | distance 40 |

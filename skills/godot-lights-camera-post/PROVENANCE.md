@@ -10,4 +10,5 @@
   volumetric fog; Viewport: TAA limitations; CameraAttributesPractical); godot-docs
   `tutorials/shaders/custom_postprocessing` (CanvasLayer + ColorRect + `hint_screen_texture`).
 - **Validation scene**: Kenney *Fantasy Town Kit* (CC0 1.0, https://kenney.nl), not redistributed here.
+  Also "wooden Barrel" by jrybalov (https://sketchfab.com/3d-models/wooden-barrel-dc8560d9474e4293bc1452487495fd37), CC-BY-4.0, not redistributed here.
 - **Files**: all original, MIT.
