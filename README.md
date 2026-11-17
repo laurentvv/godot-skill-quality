@@ -32,6 +32,7 @@ numbers in `references/evidence.md`.
 | [`godot-vegetation-shaders`](skills/godot-vegetation-shaders/SKILL.md) | Blotchy leaf-card trees, grass that slides instead of bending, flat green ground, slow grass fields | `leaf_canopy`, `grass_wind` and `ground_blend` shaders, MultiMesh scatter, ground-mask builder, 2 Blender prep scripts |
 | [`godot-lights-camera-post`](skills/godot-lights-camera-post/SKILL.md) | Character lost in shade, no local light, raw final image, jagged and shimmering edges | Cull-masked fill light, diegetic local lights, FOV/DOF framing, MSAA/TAA/alpha-to-coverage, vignette + grain shader, dust |
 | [`godot-render-performance`](skills/godot-render-performance/SKILL.md) | "It looks great but runs at 50 fps" | GPU-time bench (each feature alone and leave-one-out), sun-shadow quality presets, a "lower the sub-setting, keep the look" method |
+| [`godot-ai-code-perf`](skills/godot-ai-code-perf/SKILL.md) | AI-generated GDScript stutters, FPS dies as entities multiply | The ten AI-code FPS-drop patterns (quadratic lookups, per-frame UI mutations, per-frame allocations, unbatched draws, no pooling, variable-timestep physics...) translated to Godot 4 with detection greps and fixes — from andrew_game_perf (MIT), Godot mappings doc-checked on 4.7, measurements pending (`references/evidence-status.md`) |
 
 ## Before / after
 
@@ -143,11 +144,16 @@ skills/
   godot-vegetation-shaders/     SKILL.md, assets/ (shaders), scripts/ (GDScript + Blender), references/, evals/
   godot-lights-camera-post/     SKILL.md, assets/, scripts/, references/, evals/
   godot-render-performance/     SKILL.md, scripts/, references/, evals/
+  godot-ai-code-perf/           SKILL.md, references/ (upstream patterns, evidence status), PROVENANCE.md
 docs/images/                    README illustrations (rendered from the test scene)
 ```
 
 ## Credits
 
+- **`godot-ai-code-perf` patterns**: [andrew_game_perf](https://github.com/gykim80/andrew_game_perf)
+  by Andrew Kim (MIT, pinned `d0976ee`). That repository's ten FPS-drop patterns, severities and
+  measured web-game numbers are reused with attribution; all Godot mappings are original to this
+  repository (see the skill's `PROVENANCE.md`).
 - **Ideas and method**: *Why 3D Games Look Bad in Godot*, Coding Quests, 2026,
   <https://youtu.be/0792U-wuwjA>. This repository reuses the ideas (the 12 "graphics switches" and the
   performance method) with original wording, code and measurements. No text, code or images from the video
